@@ -17,12 +17,6 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        repos: [
-            {
-                type: String,
-                trim: true,
-            },
-        ],
     },
     {
         timestamps: true,
@@ -33,7 +27,6 @@ interface IUser {
     name: string;
     email: string;
     password: string;
-    repos: string[]; // Specify the correct type for the 'repos' property
 }
 
 interface IUserDocument extends IUser, Document {
