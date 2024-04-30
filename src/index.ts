@@ -1,25 +1,24 @@
 import express from 'express';
-import userRoutes from './routes/userRoutes';
-import {connectDB} from './config/db';
-import {notFound, errorHandler} from "./middleware/errorMiddleware";
+import { notFound, errorHandler } from "./middleware/error-middleware";
 import dotenv from 'dotenv';
 import cors from 'cors';
+import pokemonRouter from './routes/pokemon-routes';
+import { redisClient } from './config/redis-config';
 
 dotenv.config();
 
-connectDB();
+const port = 3004;
 
-const port = 3000;
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 
-app.use("/v1/user", userRoutes);
+app.use("/v1/pokemons", pokemonRouter)
 
-app.get("/", (req, res)=>{
-    res.json({msg: "The server is working, Nothing to worry about."})
+app.get("/", (req, res) => {
+    res.json({ msg: "The server is working, Nothing to worry about." })
 })
 
 
