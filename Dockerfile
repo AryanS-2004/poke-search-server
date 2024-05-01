@@ -8,6 +8,6 @@ RUN npm install
 
 RUN npm install -g typescript
 
-EXPOSE 3000
+EXPOSE 3004
 
 CMD [ "npm", "start" ]
